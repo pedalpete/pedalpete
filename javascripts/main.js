@@ -54,7 +54,8 @@ Resume.Routers.Start = Backbone.Router.extend({
             if(location.hash==''){
             	location.hash='#resume';
             }
-           $('a[href="'+location.hash+'"]').parent().addClass('active');
+
+           $('a[href="'+location.hash.split('/')[0]+'"]').parent().addClass('active');
       }
 	
 });
