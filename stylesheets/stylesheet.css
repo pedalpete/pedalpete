@@ -65,6 +65,10 @@ padding: 10px 180px 10px;
   font-weight: 300;
 }
 
+div#main {
+  margin-top: 10px;
+}
+
 div#result {
   padding-top: 20px;
   font-size: 10pt;
@@ -88,4 +92,20 @@ div#result div.dates {
 div#result p {
   font-size: 11pt;
   line-height: 16px;
+}
+
+span#sub_nav li {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+span#sub_nav li.shown  {
+  background-color: #EEE;
+}
+
+span#sub_nav li.shown a {
+   color: #777;
+}
+
+div#email span{
+  font-size: 0px;
 }

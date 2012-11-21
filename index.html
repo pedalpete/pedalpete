@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-with-responsive.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css">
-    <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+
 
     <title>Pedalpete For Product Manager!</title>
 
@@ -37,7 +37,7 @@
       
           <div id="logo" class="span3"></div>
           <div class="span9">
-             <input type="text" class="span6" id="searchbox" /> <a class="btn btn-primary">search</a>
+             <input type="text" class="span6" id="searchbox" value="Vote for Pedro (for Google Product Manager)" /> <a class="btn btn-primary">Hire Me!</a>
           </div>
        
       </div>
@@ -62,15 +62,7 @@
               <li class="nav-header"><h3>Product Manager</h3></li>
               <li>Sydney, Australia</li>
               <hr>
-              <li class="nav-header"><h3>Relevant Skills<br/>&amp; Characteristics</h3></li>
-              <li>Product Management</li>
-              <li>Business Planning</li>
-              <li>Vision & Strategy</li>
-              <li>Usability & Design</li>
-              <li>People Person</li>
-              <li>Follow Through</li>
-              <li>Tenacity</li>
-              <li>Developer</li>
+              <span id="sub_nav"></span>
 
             </ul>
           </div><!--/.well -->
@@ -78,19 +70,10 @@
         <div class="span5">
             <div style="color:#777;">About 1,230,720,660 seconds (39 years)</div>
            
-            <div id="result">
-              <a>Data Management Architect &amp; Developer</a>
-              <div class="company">Bravo Media</div>
-              <div class="dates">6 Months - May 2011 tp Oct 2011</div>
-              <p>Gathered business requirements, and envisioned a solution to painstaking highly labour intensive data management system for online retailer. Delivered a web-based solution resulting in 75% reduction in processing time and considerable accuracy improvement. Very well received by employees and management.</p>
-              <p>»</p>
+           <div id="main"></div>
         
-          </div><!--/row-->
         </div><!--/span-->
          <div class="span4">
-          <div class="hero-unit">
-            <h1>hero 2</h1>
-          </div>
         </div>
       </div><!--/row-->
 
@@ -99,12 +82,31 @@
 
     </div>
 
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script  src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
+  <script  src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+  <script src="javascripts/main.js"></script>
   
+    <script>
+    $(document).ready(function(){
+      Resume.init();
 
-</body>
+      $('input#searchbox').focus(function(){
+          alert("Your search is over, you've found your new Product Manager!");
+          $(this).blur();
+      });
+ 
+    });
+    </script>
 
-    
+    <script type="text/template" id="jobs_template">
+       <div id="result">
+              <a><%= title %></a>
+              <div class="company"><%= company %></div>
+              <div class="dates"><%= dates %></div>
+              <p><%= description %></p>
+              <p>»</p>
+    </script>
 
   </body>
 </html>
