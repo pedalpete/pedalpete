@@ -23,6 +23,7 @@ Resume.Routers.Start = Backbone.Router.extend({
 		"recommendations": "recommendations",
 		"contact":"contact",
 		"intro":"intro",
+		"education":"education",
 		"": "resume"
 	},
 
@@ -55,6 +56,11 @@ Resume.Routers.Start = Backbone.Router.extend({
 	intro: function(){
 		new Resume.Views.Intro();
 		new Resume.Views.InTheNews();
+		this.location_hash();
+	},
+
+	education: function(){
+		new Resume.Views.Education();
 		this.location_hash();
 	},
 	location_hash: function(){
@@ -197,7 +203,6 @@ Resume.Views.RecommendQuotes = Backbone.View.extend({
 
 	},
 	add: function(quote){
-		console.log(quote);
 			var template = _.template( $("#recommendation_quotes").html(), quote.attributes);
 			$('div#snippits').append(template);
 	}
@@ -231,3 +236,27 @@ Resume.inthenews = new Resume.Collections.InTheNews([{"source":"TechCrunch","typ
 													{"source":"Cnet","type":"youtube","link":'<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/1rVHf2hWQi0&start=76&end=102"></param><param name="allowFullScreen" value="true"></param><embed src="http://www.youtube.com/v/1rVHf2hWQi0&start=76&end=102" type="application/x-shockwave-flash" allowfullscreen="true" width="425" height="344"></embed></object>',"title":"Just Like You Pictured It"},
 													{"source":"CBC","type":"text","link":"http://www.cbc.ca/news/business/smallbusiness/story/2012/01/12/f-vp-buckner-chile.html","title":"Chile luring Canadian firms with $40K of free cash"},
 													{"source":"TechRadar","type":"text","link":"http://www.techradar.com/news/internet/web/20-websites-you-never-realised-you-needed-478989","title":"20 websites you never realised you needed (#4)"}]);
+
+
+Resume.Models.Education = Backbone.Model.extend();
+Resume.Collections.Schools = Backbone.Collection.extend({
+	model: Resume.Models.Education
+});
+Resume.Views.Education = Backbone.View.extend({
+	el:'div#main',
+
+	initialize: function(){
+		$(this.el).empty();
+	  Resume.education.each(this.add);
+	  	
+		
+	},
+	
+	add: function(education){
+		var template = _.template( $("#jobs_template").html(), education.attributes);
+ 		$('div#main').append(template);
+	}
+});
+
+Resume.education = new Resume.Collections.Schools([{"title":"2 Years towards BA Computer Science / Psychology", "company":"Carlton University - Ottawa, Ontario, Canada", "dates":"2 Years - Sept 1992 to June 1994","description":"University isn't for everybody, like the founders of Google, and most other REALLY successful people in technology, so why not me! In all seriousness, I have continued to education myself since leaving school."},
+													{"title":"15+ Years of Learning &amp; Doing ","company":"Intrawest, Whistler/Blackbonb, iPix, MusicIp...","dates":"15+ Years - Sept 1995 to Today","description":"My education has been continuous since leaving university. I've been exceptionally fortunate to have been approached with opportunities to work in many fields of business. Additionally, I am a very curious person, participating in all kinds of research and study in a diverse area of interests. Though, my formal education may be limited, I hope you'll agree that my work experience and character have prepared me well for the position of Product Manager with Google."}]);
